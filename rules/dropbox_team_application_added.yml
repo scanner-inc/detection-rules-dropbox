@@ -1,0 +1,19 @@
+# schema: https://scanner.dev/schema/scanner-detection-rule.v1.json
+name: Dropbox Team Application Added
+description: |-
+  Detect when an application is linked to your Dropbox team account.
+  This can indicate potential abuse or unauthorized third-party access.
+enabled: true
+severity: Low
+query_text: |-
+  %ingest.source_type:dropbox
+  event_type..tag:app_link_team
+  event_type.description:'Linked app for team'
+time_range_s: 300
+run_frequency_s: 60
+event_sink_keys:
+- low_severity_alerts
+tags:
+- tactics.ta0001.initial_access
+- techniques.t1078.valid_accounts
+- source.dropbox 

@@ -1,0 +1,21 @@
+# schema: https://scanner.dev/schema/scanner-detection-rule.v1.json
+name: Dropbox Document/Folder Ownership Transfer
+description: |-
+  Detect when ownership of a Dropbox document or folder has been transferred.
+  This can indicate potential data theft, privilege escalation, or
+  unauthorized access.
+enabled: true
+severity: High
+query_text: |-
+  %ingest.source_type:dropbox
+  event_type.description:'Transferred ownership'
+  | groupbycount(actor.user.email)
+  | where @q.count > 0
+time_range_s: 300
+run_frequency_s: 60
+event_sink_keys:
+- high_severity_alerts
+tags:
+- tactics.ta0004.privilege_escalation
+- techniques.t1078.valid_accounts
+- source.dropbox

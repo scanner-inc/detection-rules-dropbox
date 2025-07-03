@@ -1,0 +1,22 @@
+# schema: https://scanner.dev/schema/scanner-detection-rule.v1.json
+name: Dropbox Admin Sign-in-as Session
+description: |-
+  Detect when an admin starts a sign-in-as session in Dropbox.
+  This feature allows administrators to impersonate users,
+  which should be monitored for potential abuse or
+  unauthorized access.
+enabled: true
+severity: Medium
+query_text: |-
+  %ingest.source_type:dropbox
+  event_type..tag:sign_in_as_session_start
+  | groupbycount(actor.admin.email)
+  | where @q.count > 0
+time_range_s: 300
+run_frequency_s: 60
+event_sink_keys:
+- medium_severity_alerts
+tags:
+- tactics.ta0004.privilege_escalation
+- techniques.t1078.valid_accounts
+- source.dropbox
