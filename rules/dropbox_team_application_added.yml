@@ -6,7 +6,7 @@ description: |-
 enabled: true
 severity: Low
 query_text: |-
-  %ingest.source_type:dropbox
+  %ingest.source_type:"dropbox:audit"
   event_type..tag:app_link_team
   event_type.description:'Linked app for team'
 time_range_s: 300
