@@ -6,7 +6,7 @@ description: |-
 enabled: true
 severity: Low
 query_text: |-
-  %ingest.source_type:dropbox
+  @scnr.source_type:dropbox
   details..tag:tfa_change_status_details
   details.new_value..tag:disabled
   | groupbycount(actor.user.email)

@@ -7,7 +7,7 @@ description: |-
 enabled: true
 severity: High
 query_text: |-
-  %ingest.source_type:dropbox
+  @scnr.source_type:dropbox
   event_type.description:'Transferred ownership'
   | groupbycount(actor.user.email)
   | where @q.count > 0
