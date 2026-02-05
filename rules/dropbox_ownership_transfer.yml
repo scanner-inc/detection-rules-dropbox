@@ -4,7 +4,6 @@ description: |-
   Detect when ownership of a Dropbox document or folder has been transferred.
   This can indicate potential data theft, privilege escalation, or
   unauthorized access.
-enabled: true
 severity: High
 query_text: |-
   @scnr.source_type:dropbox

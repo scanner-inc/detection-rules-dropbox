@@ -5,7 +5,6 @@ description: |-
   This feature allows administrators to impersonate users,
   which should be monitored for potential abuse or
   unauthorized access.
-enabled: true
 severity: Medium
 query_text: |-
   @scnr.source_type:dropbox

@@ -3,7 +3,6 @@ name: Dropbox User Disabled 2FA
 description: |-
   Detect when a Dropbox user has disabled two-factor authentication (2FA).
   This can indicate potential account compromise or security weakening.
-enabled: true
 severity: Low
 query_text: |-
   @scnr.source_type:dropbox

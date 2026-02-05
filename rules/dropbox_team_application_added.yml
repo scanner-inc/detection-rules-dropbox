@@ -3,7 +3,6 @@ name: Dropbox Team Application Added
 description: |-
   Detect when an application is linked to your Dropbox team account.
   This can indicate potential abuse or unauthorized third-party access.
-enabled: true
 severity: Low
 query_text: |-
   @scnr.source_type:dropbox
